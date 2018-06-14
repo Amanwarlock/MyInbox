@@ -1,11 +1,11 @@
 {
-  "name": "my-inbox",
+  "name": "my-inbox-frontend",
   "version": "1.0.0",
-  "description": "MEAN stack app with socket.io for real time rendering",
-  "main": "app.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "AmanKareem",
+  "author": "Aman kareem",
   "license": "ISC"
 }
