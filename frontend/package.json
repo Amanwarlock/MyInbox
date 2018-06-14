@@ -1,15 +1,11 @@
 {
-  "name": "my-inbox-frontend",
+  "name": "my-inbox",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "MEAN stack app with socket.io for real time rendering",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AmanKareem",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.3",
-    "lodash": "^4.17.10"
-  }
+  "license": "ISC"
 }
