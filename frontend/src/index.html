@@ -9,6 +9,7 @@
     <link type="text/css" rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css"></link>
     <link type="text/css" rel="stylesheet" href="../bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css"></link>
     <link type="text/css" rel="stylesheet" href="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.csp.css"></link>
+    <!--  <link type="text/css" rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"></link> -->
     <!--  <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/> -->
     <link type="text/css" rel="stylesheet" href="assets/css/index.css"></link>
 
@@ -33,6 +34,7 @@
     <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
     <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <!--  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
     <!--  <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script> -->
     <script src="../bower_components/lodash/lodash.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -43,7 +45,7 @@
 
 <body ng-controller="mainController as main" layout="column">
     <!-- Tool bar -->
-    <md-toolbar class="md-hue-2" ng-controller="myThemeCtrl as theme">
+    <md-toolbar class="md-hue-2" ng-controller="myThemeCtrl as theme" layout="row">
 
         <div class="md-toolbar-tools">
 
@@ -51,7 +53,47 @@
                 <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
             </md-button>
 
-            <h2 flex="" md-truncate="">My Inbox</h2>
+            <h2 flex md-truncate="">My Inbox</h2>
+
+            <div class="toolbar-user-name">
+                Hi, Aman Kareem
+            </div>
+
+            <div class="toolbar-user-avatar" layout="row">
+                <img ng-src="assets/avatars/boy-x.svg" class="toolbar-img-avatar">
+            </div>
+
+            <md-menu md-position-mode="target-right target">
+
+                <md-button class="md-icon-button" aria-label="More" ng-mouseenter="$mdMenu.open($event)">
+                    <md-icon md-svg-icon="dots-vertical"></md-icon>
+                </md-button>
+
+                <md-menu-content width="4" class="toolbar-dropdown-menu-content">
+                    <!-- Item -1 = Profile -->
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.announceClick($index)">
+                            <div layout="row" flex>
+                                <md-icon md-menu-align-target md-svg-icon="assets/avatars/boy-x.svg" style="margin: auto 3px auto 0;"></md-icon>
+                                <p flex>Profile</p>
+                            </div>
+                        </md-button>
+                    </md-menu-item>
+
+                    <md-divider></md-divider>
+                    <!-- Item 2 = Logout -->
+                    <md-menu-item>
+                        <md-button ng-click="ctrl.announceClick($index)">
+                            <div layout="row" flex>
+                                <md-icon md-menu-align-target md-svg-icon="assets/icons/logout.svg" style="margin: auto 3px auto 0;"></md-icon>
+                                <p flex>Logout</p>
+                            </div>
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+
+            </md-menu>
+
         </div>
 
     </md-toolbar>
@@ -59,22 +101,33 @@
     <div class="container" layout="row" flex>
         <!-- Side  nav bar -->
         <md-sidenav class="md-sidenav-left side-nav-bar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="24" md-component-id="left">
-            <md-list>
-                <md-card md-theme="dark-purple" md-theme-watch>
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">Card with image</span>
-                            <span class="md-subhead">Small</span>
-                        </md-card-title-text>
+            <md-list class="side-nav-bar-list">
+                <!-- Profile avatar -->
+                <md-card class="side-nav-bar-profile-card" layout="column" md-theme-watch>
+
+                    <md-card-title class="side-nav-bar-profile-card-title">
+
                         <md-card-title-media>
-                            <div class="md-media-sm card-media"><ng-avatar initials="A"></ng-avatar></div>
+                            <div>
+                                <img ng-src="assets/avatars/boy-x.svg" class="md-card-image side-nav-bar-avatar" alt="Washed Out">
+                            </div>
                         </md-card-title-media>
+
+                        <md-card-title-text>
+                            <span class="md-subhead">
+                                <h4>Mohd Aman Kareem</h4>
+                            </span>
+                            <span class="md-subhead">
+                                <h4>amanwarlock555@gmail.com</h4>
+                            </span>
+                        </md-card-title-text>
+
                     </md-card-title>
 
                 </md-card>
 
                 <!-- Item -1 -->
-                <md-list-item class="nav-bar-list-items" flex>
+                <md-list-item class="side-nav-bar-list-items" flex>
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/email.svg" class="side-nav-bar-icons"></md-icon>
@@ -88,7 +141,7 @@
                 <md-divider></md-divider>
 
                 <!-- Item -2 -->
-                <md-list-item class="nav-bar-list-items" flex>
+                <md-list-item class="side-nav-bar-list-items" flex>
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/sent.svg" class="side-nav-bar-icons"></md-icon>
@@ -102,7 +155,7 @@
                 <md-divider></md-divider>
 
                 <!-- Item - 3 -->
-                <md-list-item class="nav-bar-list-items" flex>
+                <md-list-item class="side-nav-bar-list-items" flex>
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/delete.svg" class="side-nav-bar-icons"></md-icon>
@@ -116,7 +169,7 @@
                 <md-divider></md-divider>
 
                 <!-- Item - 4 -->
-                <md-list-item class="nav-bar-list-items" flex>
+                <md-list-item class="side-nav-bar-list-items" flex>
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/contacts.svg" class="side-nav-bar-icons"></md-icon>
@@ -130,7 +183,7 @@
                 <md-divider></md-divider>
 
                 <!-- Item - 5 -->
-                <md-list-item class="nav-bar-list-items" flex>
+                <md-list-item class="side-nav-bar-list-items" flex>
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/account.svg" class="side-nav-bar-icons"></md-icon>
@@ -144,7 +197,7 @@
                 <md-divider></md-divider>
 
                 <!-- Item - 6 -->
-                <md-list-item class="nav-bar-list-items" flex>
+                <md-list-item class="side-nav-bar-list-items" flex>
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/settings.svg" class="side-nav-bar-icons"></md-icon>
@@ -158,7 +211,7 @@
                 <md-divider></md-divider>
 
                 <!-- Item - 7 -->
-                <md-list-item class="nav-bar-list-items" flex>
+                <md-list-item class="side-nav-bar-list-items" flex>
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/support.svg" class="side-nav-bar-icons"></md-icon>
@@ -178,8 +231,51 @@
         <md-content class="content" flex>
             <ui-view></ui-view>
             {{2+2}}
-            <md-icon md-svg-icon="android"></md-icon>
-            <i class="mdi mdi-bell"></i>
+            <!--  <md-icon md-svg-icon="android"></md-icon>
+            <i class="mdi mdi-bell"></i> -->
+            <!-- Emails list -->
+            <md-list class="email-list" flex>
+                {{item.isOpen}}
+                <md-list-item class="md-3-line " ng-repeat="item in todos" ng-click="null" ng-mouseenter="item.isOpen=true" ng-mouseleave="item.isOpen=false">
+
+                    <div class="md-list-item-text" layout="row">
+                        <md-checkbox class="email-list-item-checkbox" ng-model="isChecked" aria-label="Finished?"></md-checkbox>
+                        <div class="email-list-item-avatar" flex>
+                            <img ng-src={{item.avatar}} class="toolbar-img-avatar">
+                        </div>
+                        <div class="email-list-item-sender" flex>
+                            <md-truncate flex>{{ item.who }}</md-truncate>
+                        </div>
+                        <div class="email-list-item-subject" flex>
+                            <md-truncate>{{ item.what }}</md-truncate>
+                        </div>
+                        <div class="email-list-item-body" flex>{{ item.notes }}</div>
+                    </div>
+
+                    <div layout="row">
+                        <md-fab-toolbar md-open="item.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
+                            <md-toolbar>
+                                <md-fab-actions class="md-toolbar-tools">
+                                    <md-button aria-label="important" class="md-icon-button" ng-click="" md-ink-ripple>
+                                        <md-icon md-svg-src="assets/icons/star.svg"></md-icon>
+                                    </md-button>
+                                    <md-button aria-label="label" class="md-icon-button" md-ink-ripple>
+                                        <md-icon md-svg-src="assets/icons/label.svg"></md-icon>
+                                    </md-button>
+                                    <md-button aria-label="delete" class="md-icon-button" md-ink-ripple>
+                                        <md-icon md-svg-src="assets/icons/delete-forever.svg"></md-icon>
+                                    </md-button>
+                                </md-fab-actions>
+                            </md-toolbar>
+
+                        </md-fab-toolbar>
+                    </div>
+
+                    <md-divider></md-divider>
+
+                </md-list-item>
+
+            </md-list>
         </md-content>
     </div>
 
