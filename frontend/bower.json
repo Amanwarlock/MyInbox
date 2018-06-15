@@ -1,0 +1,27 @@
+{
+  "name": "my-inbox-frontend",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Aman kareem"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Amanwarlock/MyInbox",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.10",
+    "angular-material": "^1.1.9",
+    "lodash": "^4.17.10",
+    "socket.io": "^2.1.1",
+    "font-awesome": "^5.0.13",
+    "angular-ui-router": "^1.0.18",
+    "mdi": "^2.4.85",
+    "angular-avatar": "^1.3.0"
+  }
+}

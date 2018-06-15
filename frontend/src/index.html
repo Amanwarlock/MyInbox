@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myIboxApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import all CSS styles  -->
+    <link type="text/css" rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css"></link>
+    <link type="text/css" rel="stylesheet" href="../bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css"></link>
+    <link type="text/css" rel="stylesheet" href="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.csp.css"></link>
+    <!--  <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/> -->
+    <link type="text/css" rel="stylesheet" href="assets/css/index.css"></link>
+
+    <!-- Fonts -->
+    <link type="text/css" rel="stylesheet" href="../node_modules/mdi/fonts/materialdesignicons-webfont.eot"></link>
+    <link type="text/css" rel="stylesheet" href="../node_modules/mdi/fonts/materialdesignicons-webfont.svg"></link>
+    <link type="text/css" rel="stylesheet" href="../node_modules/mdi/fonts/materialdesignicons-webfont.ttf"></link>
+    <link type="text/css" rel="stylesheet" href="../node_modules/mdi/fonts/materialdesignicons-webfont.woff"></link>
+    <link type="text/css" rel="stylesheet" href="../node_modules/mdi/fonts/materialdesignicons-webfont.woff2"></link>
+    <!-- material design icons -->
+    <link type="text/css" rel="stylesheet" href="../node_modules/mdi/css/materialdesignicons.min.css"></link>
+    <link type="text/css" rel="stylesheet" href="../node_modules/mdi/css/materialdesignicons.min.css.map"></link>
+
+
+    <title>My Inbox</title>
+
+    <!-- Import all js libraries -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../bower_components/angular-material/angular-material.min.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <!--  <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script> -->
+    <script src="../bower_components/lodash/lodash.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Avatar library -->
+    <script src="../bower_components/angular-avatar/dist/angular-avatar.min.js"></script>
+
+</head>
+
+<body ng-controller="mainController as main" layout="column">
+    <!-- Tool bar -->
+    <md-toolbar class="md-hue-2" ng-controller="myThemeCtrl as theme">
+
+        <div class="md-toolbar-tools">
+
+            <md-button class="md-icon-button" aria-label="Settings" ng-click="theme.toggleSideBar();">
+                <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
+            </md-button>
+
+            <h2 flex="" md-truncate="">My Inbox</h2>
+        </div>
+
+    </md-toolbar>
+
+    <div class="container" layout="row" flex>
+        <!-- Side  nav bar -->
+        <md-sidenav class="md-sidenav-left side-nav-bar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="24" md-component-id="left">
+            <md-list>
+                <md-card md-theme="dark-purple" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Card with image</span>
+                            <span class="md-subhead">Small</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm card-media"><ng-avatar initials="A"></ng-avatar></div>
+                        </md-card-title-media>
+                    </md-card-title>
+
+                </md-card>
+
+                <!-- Item -1 -->
+                <md-list-item class="nav-bar-list-items" flex>
+                    <md-button flex>
+                        <div layout="row">
+                            <md-icon md-svg-icon="assets/icons/email.svg" class="side-nav-bar-icons"></md-icon>
+                            <div flex>
+                                <h4>Inbox</h4>
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <!-- Item -2 -->
+                <md-list-item class="nav-bar-list-items" flex>
+                    <md-button flex>
+                        <div layout="row">
+                            <md-icon md-svg-icon="assets/icons/sent.svg" class="side-nav-bar-icons"></md-icon>
+                            <div flex>
+                                <h4>Sent</h4>
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <!-- Item - 3 -->
+                <md-list-item class="nav-bar-list-items" flex>
+                    <md-button flex>
+                        <div layout="row">
+                            <md-icon md-svg-icon="assets/icons/delete.svg" class="side-nav-bar-icons"></md-icon>
+                            <div flex>
+                                <h4>Trash</h4>
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <!-- Item - 4 -->
+                <md-list-item class="nav-bar-list-items" flex>
+                    <md-button flex>
+                        <div layout="row">
+                            <md-icon md-svg-icon="assets/icons/contacts.svg" class="side-nav-bar-icons"></md-icon>
+                            <div flex>
+                                <h4>Contacts</h4>
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <!-- Item - 5 -->
+                <md-list-item class="nav-bar-list-items" flex>
+                    <md-button flex>
+                        <div layout="row">
+                            <md-icon md-svg-icon="assets/icons/account.svg" class="side-nav-bar-icons"></md-icon>
+                            <div flex>
+                                <h4>Account</h4>
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <!-- Item - 6 -->
+                <md-list-item class="nav-bar-list-items" flex>
+                    <md-button flex>
+                        <div layout="row">
+                            <md-icon md-svg-icon="assets/icons/settings.svg" class="side-nav-bar-icons"></md-icon>
+                            <div flex>
+                                <h4>Settings</h4>
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+                <!-- Item - 7 -->
+                <md-list-item class="nav-bar-list-items" flex>
+                    <md-button flex>
+                        <div layout="row">
+                            <md-icon md-svg-icon="assets/icons/support.svg" class="side-nav-bar-icons"></md-icon>
+                            <div flex>
+                                <h4>Support</h4>
+                            </div>
+                        </div>
+                    </md-button>
+                </md-list-item>
+
+                <md-divider></md-divider>
+
+            </md-list>
+        </md-sidenav>
+
+        <!--Content body  -->
+        <md-content class="content" flex>
+            <ui-view></ui-view>
+            {{2+2}}
+            <md-icon md-svg-icon="android"></md-icon>
+            <i class="mdi mdi-bell"></i>
+        </md-content>
+    </div>
+
+    <!-- Import all app related dependent files -->
+    <!-- Services -->
+    <!-- Factories -->
+    <!-- Directives -->
+    <!-- Controllers -->
+    <script src="theme/theme.controller.js"></script>
+    <script src="controllers/main.controller.js"></script>
+    <!-- Main app.js -->
+    <script src="app.js"></script>
+</body>
+
+</html>
