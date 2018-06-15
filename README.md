@@ -17,3 +17,4 @@ Animated Icons:
 
 Avatars:
     - https://github.com/ajsoriar/angular-avatar
+```sh```
