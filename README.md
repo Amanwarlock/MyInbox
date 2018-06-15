@@ -2,7 +2,7 @@
 A MEAN stack project for managing emails and etc
 
 
-```sh```
+```
 Resources :
 Front end:
     - https://material.angularjs.org/latest/Theming/01_introduction
@@ -17,4 +17,5 @@ Animated Icons:
 
 Avatars:
     - https://github.com/ajsoriar/angular-avatar
-```sh```
+    - https://www.flaticon.com/packs/avatar-set
+```
