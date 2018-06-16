@@ -1,6 +1,9 @@
 (function () {
     "use strict"
-    angular.module("mainCtrl", [])
+    angular.module("mainCtrl", [
+        'authModule',
+        'dashboardModule'
+    ])
         .config(function ($urlRouterProvider) {
             $urlRouterProvider.otherwise("/login");
         })
