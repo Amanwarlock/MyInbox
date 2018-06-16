@@ -2,7 +2,7 @@
     "use strict"
     angular.module("mainCtrl", [])
         .config(function ($urlRouterProvider) {
-            //  $urlRouterProvider.otherwise("/login");
+            $urlRouterProvider.otherwise("/login");
         })
         .controller("mainController", function ($scope, $rootScope, $q, $http) {
 
