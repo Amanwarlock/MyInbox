@@ -3,14 +3,35 @@
     color: rgba(255, 255, 255, 0.87);
 }
 
+.toolbar-vertical-dot-item-title {
+    padding-left: 5%;
+}
+
 .side-nav-bar {
     background-color: rgba(233, 224, 224, 0.938);
-    /* rgb(66,66,66); */
     color: dimgray;
 }
 
+.side-nav-bar-title {
+    padding-right: 50%;
+    padding-left: 10%;
+    text-align: left;
+}
+
 .side-nav-bar-icons {
-    color: black;
+    color: currentColor;
+}
+
+.side-nav-bar-card-profile-img-change {
+    font-size: 12px;
+    color: dimgray;
+}
+
+.side-bar-profile-img-chang {
+    min-height: 12px;
+    max-height: 16px;
+    min-width: 12px;
+    max-width: 16px;
 }
 
 .side-nav-bar-profile-card {
@@ -42,8 +63,8 @@
 
 .content {
     background-color: rgba(233, 224, 224, 0.938);
-    /*  cadetblue */
     color: dimgray;
+    word-spacing: 0.3em;
 }
 
 .carddemoBasicUsage .card-media {
@@ -66,6 +87,20 @@
 
 .toolbar-dropdown-menu-content {
     background-color: rgba(233, 224, 224, 0.938);
+}
+
+.search-cage {
+    padding: 1%;
+    text-align: center;
+    display: flex;
+    background-color: white;
+}
+
+.utility-tool-bar {
+    padding-left: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    background-color: honeydew;
 }
 
 .email-list {
@@ -99,10 +134,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 50%;
+    max-width: 55%;
 }
 
-.email-list-item-checkbox{
+.email-list-item-checkbox {
     padding-right: 1%;
 }
 

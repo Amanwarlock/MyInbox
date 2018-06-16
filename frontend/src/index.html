@@ -75,7 +75,7 @@
                         <md-button ng-click="ctrl.announceClick($index)">
                             <div layout="row" flex>
                                 <md-icon md-menu-align-target md-svg-icon="assets/avatars/boy-x.svg" style="margin: auto 3px auto 0;"></md-icon>
-                                <p flex>Profile</p>
+                                <p class="toolbar-vertical-dot-item-title" flex>Profile</p>
                             </div>
                         </md-button>
                     </md-menu-item>
@@ -86,7 +86,7 @@
                         <md-button ng-click="ctrl.announceClick($index)">
                             <div layout="row" flex>
                                 <md-icon md-menu-align-target md-svg-icon="assets/icons/logout.svg" style="margin: auto 3px auto 0;"></md-icon>
-                                <p flex>Logout</p>
+                                <p class="toolbar-vertical-dot-item-title" flex>Logout</p>
                             </div>
                         </md-button>
                     </md-menu-item>
@@ -111,6 +111,9 @@
                             <div>
                                 <img ng-src="assets/avatars/boy-x.svg" class="md-card-image side-nav-bar-avatar" alt="Washed Out">
                             </div>
+                            <a href="#" class="side-nav-bar-card-profile-img-change" md-ink-ripple>
+                                <md-icon md-svg-icon="camera" class="side-bar-profile-img-chang"></md-icon>Change
+                            </a>
                         </md-card-title-media>
 
                         <md-card-title-text>
@@ -131,7 +134,7 @@
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/email.svg" class="side-nav-bar-icons"></md-icon>
-                            <div flex>
+                            <div class="side-nav-bar-title" flex>
                                 <h4>Inbox</h4>
                             </div>
                         </div>
@@ -145,7 +148,7 @@
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/sent.svg" class="side-nav-bar-icons"></md-icon>
-                            <div flex>
+                            <div class="side-nav-bar-title" flex>
                                 <h4>Sent</h4>
                             </div>
                         </div>
@@ -159,7 +162,7 @@
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/delete.svg" class="side-nav-bar-icons"></md-icon>
-                            <div flex>
+                            <div class="side-nav-bar-title" flex>
                                 <h4>Trash</h4>
                             </div>
                         </div>
@@ -173,7 +176,7 @@
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/contacts.svg" class="side-nav-bar-icons"></md-icon>
-                            <div flex>
+                            <div class="side-nav-bar-title" flex>
                                 <h4>Contacts</h4>
                             </div>
                         </div>
@@ -187,7 +190,7 @@
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/account.svg" class="side-nav-bar-icons"></md-icon>
-                            <div flex>
+                            <div class="side-nav-bar-title" flex>
                                 <h4>Account</h4>
                             </div>
                         </div>
@@ -201,7 +204,7 @@
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/settings.svg" class="side-nav-bar-icons"></md-icon>
-                            <div flex>
+                            <div class="side-nav-bar-title" flex>
                                 <h4>Settings</h4>
                             </div>
                         </div>
@@ -215,7 +218,7 @@
                     <md-button flex>
                         <div layout="row">
                             <md-icon md-svg-icon="assets/icons/support.svg" class="side-nav-bar-icons"></md-icon>
-                            <div flex>
+                            <div class="side-nav-bar-title" flex>
                                 <h4>Support</h4>
                             </div>
                         </div>
@@ -230,9 +233,60 @@
         <!--Content body  -->
         <md-content class="content" flex>
             <ui-view></ui-view>
-            {{2+2}}
+            <!-- utility -->
+            <div layout="row" class="utility-tool-bar" flex>
+
+                <div class="utility-item-select-reload" flex>
+                    <md-checkbox ng-model="main.selectAll" aria-label="Select-All"></md-checkbox>
+                    <md-button class="md-icon-button" aria-label="reload">
+                        <md-icon md-svg-icon="reload"></md-icon>
+                    </md-button>
+                </div>
+
+                <div class="utility-item-search-bar" flex>
+                    <div layout="row">
+                        <div md-whiteframe-1dp class="search-cage" md-whiteframe="1">
+                            <md-icon md-svg-icon="magnify"></md-icon>
+                        </div>
+                        <md-autocomplete id="custom-template" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem"
+                            md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)"
+                            md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Search mail"
+                            md-menu-class="autocomplete-custom-template" md-menu-container-class="custom-container">
+                            <md-item-template>
+                                <span class="item-title">
+                                    <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+                                    <span> {{item.name}} </span>
+                                </span>
+                                <span class="item-metadata">
+                                    <span>
+                                        <strong>{{item.watchers}}</strong> watchers
+                                    </span>
+                                    <span>
+                                        <strong>{{item.forks}}</strong> forks
+                                    </span>
+                                </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </div>
+                </div>
+
+                <div class="utility-item-pagination" flex>
+                    <span>1 - 50 of 100</span>
+                    <md-button class="md-icon-button" aria-label="previous">
+                        <md-icon md-svg-icon="chevron-left"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="next">
+                        <md-icon md-svg-icon="chevron-right"></md-icon>
+                    </md-button>
+
+                </div>
+
+            </div>
+
+            <md-divider></md-divider>
             <!--  <md-icon md-svg-icon="android"></md-icon>
             <i class="mdi mdi-bell"></i> -->
+
             <!-- Emails list -->
             <md-list class="email-list" flex>
                 {{item.isOpen}}
@@ -276,6 +330,39 @@
                 </md-list-item>
 
             </md-list>
+
+            <md-fab-speed-dial md-direction="up" md-open="main.isFabOpen" class="md-scale md-fab-bottom-right" ng-mouseenter="main.isFabOpen=true"
+                ng-mouseleave="main.isFabOpen=false">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab md-primary">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible">Menu</md-tooltip>
+                        <md-icon md-svg-src="menu" aria-label="menu"></md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                            Compose emails
+                        </md-tooltip>
+                        <md-icon md-svg-src="assets/icons/compose.svg" aria-label="compose"></md-icon>
+                    </md-button>
+                    <md-button aria-label="" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                            Refresh
+                        </md-tooltip>
+                        <md-icon md-svg-src="reload" aria-label="compose"></md-icon>
+                    </md-button>
+                    <md-button aria-label="" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                            Delete emails
+                        </md-tooltip>
+                        <md-icon md-svg-src="delete" aria-label="delete"></md-icon>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+
+
         </md-content>
     </div>
 

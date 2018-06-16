@@ -8,6 +8,8 @@
 
             let vm = this;
 
+            vm.isFabOpen = false;
+
             $scope.demo = {
                 isOpen: false,
                 count: 0,
