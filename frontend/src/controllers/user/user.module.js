@@ -7,6 +7,7 @@
                     url: '/signup',
                     templateUrl: '../../pages/signup.html',
                     controller: 'userController',
+                    controllerAs: 'user',
                     title: 'Signup'
                 });
         })

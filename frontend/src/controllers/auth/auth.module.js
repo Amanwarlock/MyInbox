@@ -8,6 +8,7 @@
                     url: '/login',
                     templateUrl: '../../pages/login.html',
                     controller: 'authController',
+                    controllerAs: 'auth',
                     title: 'Login'
                 })
         });
