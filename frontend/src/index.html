@@ -12,6 +12,8 @@
     <!--  <link type="text/css" rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"></link> -->
     <!--  <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/> -->
     <link type="text/css" rel="stylesheet" href="assets/css/index.css"></link>
+    <link type="text/css" rel="stylesheet" href="assets/css/login.css"></link>
+    <link type="text/css" rel="stylesheet" href="assets/css/signup.css"></link>
 
     <!-- Fonts -->
     <link type="text/css" rel="stylesheet" href="../node_modules/mdi/fonts/materialdesignicons-webfont.eot"></link>
@@ -100,6 +102,8 @@
 
     <div class="container" layout="row" flex>
         <!-- Side  nav bar -->
+        <!--  <side-nav-bar></side-nav-bar> -->
+
         <md-sidenav class="md-sidenav-left side-nav-bar" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="24" md-component-id="left">
             <md-list class="side-nav-bar-list">
                 <!-- Profile avatar -->
@@ -232,147 +236,30 @@
 
         <!--Content body  -->
         <md-content class="content" flex>
-            <ui-view></ui-view>
-            <!-- utility -->
-            <div layout="row" class="utility-tool-bar" flex>
-
-                <div class="utility-item-select-reload" flex>
-                    <md-checkbox ng-model="main.selectAll" aria-label="Select-All"></md-checkbox>
-                    <md-button class="md-icon-button" aria-label="reload">
-                        <md-icon md-svg-icon="reload"></md-icon>
-                    </md-button>
-                </div>
-
-                <div class="utility-item-search-bar" flex>
-                    <div layout="row">
-                        <div md-whiteframe-1dp class="search-cage" md-whiteframe="1">
-                            <md-icon md-svg-icon="magnify"></md-icon>
-                        </div>
-                        <md-autocomplete id="custom-template" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem"
-                            md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)"
-                            md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Search mail"
-                            md-menu-class="autocomplete-custom-template" md-menu-container-class="custom-container">
-                            <md-item-template>
-                                <span class="item-title">
-                                    <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-                                    <span> {{item.name}} </span>
-                                </span>
-                                <span class="item-metadata">
-                                    <span>
-                                        <strong>{{item.watchers}}</strong> watchers
-                                    </span>
-                                    <span>
-                                        <strong>{{item.forks}}</strong> forks
-                                    </span>
-                                </span>
-                            </md-item-template>
-                        </md-autocomplete>
-                    </div>
-                </div>
-
-                <div class="utility-item-pagination" flex>
-                    <span>1 - 50 of 100</span>
-                    <md-button class="md-icon-button" aria-label="previous">
-                        <md-icon md-svg-icon="chevron-left"></md-icon>
-                    </md-button>
-                    <md-button class="md-icon-button" aria-label="next">
-                        <md-icon md-svg-icon="chevron-right"></md-icon>
-                    </md-button>
-
-                </div>
-
-            </div>
-
-            <md-divider></md-divider>
-            <!--  <md-icon md-svg-icon="android"></md-icon>
-            <i class="mdi mdi-bell"></i> -->
             {{2+2}}
-            <!-- Emails list -->
-            <md-list class="email-list" flex>
-                {{item.isOpen}}
-                <md-list-item class="md-3-line " ng-repeat="item in todos" ng-click="null" ng-mouseenter="item.isOpen=true" ng-mouseleave="item.isOpen=false">
-
-                    <div class="md-list-item-text" layout="row">
-                        <md-checkbox class="email-list-item-checkbox" ng-model="isChecked" aria-label="Finished?"></md-checkbox>
-                        <div class="email-list-item-avatar" flex>
-                            <img ng-src={{item.avatar}} class="toolbar-img-avatar">
-                        </div>
-                        <div class="email-list-item-sender" flex>
-                            <md-truncate flex>{{ item.who }}</md-truncate>
-                        </div>
-                        <div class="email-list-item-subject" flex>
-                            <md-truncate>{{ item.what }}</md-truncate>
-                        </div>
-                        <div class="email-list-item-body" flex>{{ item.notes }}</div>
-                    </div>
-
-                    <div layout="row">
-                        <md-fab-toolbar md-open="item.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
-                            <md-toolbar>
-                                <md-fab-actions class="md-toolbar-tools">
-                                    <md-button aria-label="important" class="md-icon-button" ng-click="" md-ink-ripple>
-                                        <md-icon md-svg-src="assets/icons/star.svg"></md-icon>
-                                    </md-button>
-                                    <md-button aria-label="label" class="md-icon-button" md-ink-ripple>
-                                        <md-icon md-svg-src="assets/icons/label.svg"></md-icon>
-                                    </md-button>
-                                    <md-button aria-label="delete" class="md-icon-button" md-ink-ripple>
-                                        <md-icon md-svg-src="assets/icons/delete-forever.svg"></md-icon>
-                                    </md-button>
-                                </md-fab-actions>
-                            </md-toolbar>
-
-                        </md-fab-toolbar>
-                    </div>
-
-                    <md-divider></md-divider>
-
-                </md-list-item>
-
-            </md-list>
-
-            <md-fab-speed-dial md-direction="up" md-open="main.isFabOpen" class="md-scale md-fab-bottom-right" ng-mouseenter="main.isFabOpen=true"
-                ng-mouseleave="main.isFabOpen=false">
-                <md-fab-trigger>
-                    <md-button aria-label="menu" class="md-fab md-primary">
-                        <md-tooltip md-direction="left" md-visible="tooltipVisible">Menu</md-tooltip>
-                        <md-icon md-svg-src="menu" aria-label="menu"></md-icon>
-                    </md-button>
-                </md-fab-trigger>
-
-                <md-fab-actions>
-                    <md-button aria-label="" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
-                        <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
-                            Compose emails
-                        </md-tooltip>
-                        <md-icon md-svg-src="assets/icons/compose.svg" aria-label="compose"></md-icon>
-                    </md-button>
-                    <md-button aria-label="" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
-                        <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
-                            Refresh
-                        </md-tooltip>
-                        <md-icon md-svg-src="reload" aria-label="compose"></md-icon>
-                    </md-button>
-                    <md-button aria-label="" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
-                        <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
-                            Delete emails
-                        </md-tooltip>
-                        <md-icon md-svg-src="delete" aria-label="delete"></md-icon>
-                    </md-button>
-                </md-fab-actions>
-            </md-fab-speed-dial>
-
-
+            <ui-view></ui-view>
         </md-content>
     </div>
-
     <!-- Import all app related dependent files -->
     <!-- Services -->
+    <script src="services/user.service.js"></script>
+    <script src="services/services.js"></script>
     <!-- Factories -->
+    <script src="factory/authInterceptor.js"></script>
+    <script src="factory/auth.factory.js"></script>
+    <script src="factory/avatar.factory.js"></script>
+    <script src="factory/factory.js"></script>
     <!-- Directives -->
+    <!-- Components -->
+    <script src="components/sideNavBar/sideNavBar.component.js"></script>
+    <script src="components/main.components.js"></script>
     <!-- Controllers/Modules -->
     <script src="controllers/auth/auth.module.js"></script>
+    <script src="controllers/auth/auth.controller.js"></script>
+    <script src="controllers/user/user.module.js"></script>
+    <script src="controllers/user/user.controller.js"></script>
     <script src="controllers/dashboard/dashboard.module.js"></script>
+    <script src="controllers/dashboard/dashboard.controller.js"></script>
     <script src="theme/theme.controller.js"></script>
     <script src="controllers/main.controller.js"></script>
     <!-- Main app.js -->

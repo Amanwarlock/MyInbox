@@ -9,6 +9,6 @@
                     templateUrl: '../../pages/login.html',
                     controller: 'authController',
                     title: 'Login'
-                });
+                })
         });
 })()

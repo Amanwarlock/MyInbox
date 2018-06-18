@@ -1,3 +1,33 @@
-<div class="login">
-    Hello
+<div class="login-main-controller" layout="row" layout-align="center centre" flex>
+    <div class="login-form-container" layout="column" layout-align="center centre">
+
+        <div class="login-header">LOGIN</div>
+
+        <form name="loginForm" layout="column" class="login-form" layout-align="center centre">
+
+            <md-input-container class="username-container">
+                <label>Username</label>
+                <md-icon md-svg-src="account" class="name"></md-icon>
+                <input required name="userName" ng-model="loginData.userName">
+                <div ng-messages="loginForm.userName.$error">
+                    <div ng-message="required">Username is required.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="password-container">
+                <label>Password</label>
+                <md-icon md-svg-src="assets/icons/lock.svg" class="name"></md-icon>
+                <input required name="password" type="password" ng-model="loginData.password">
+                <div ng-messages="loginForm.password.$error">
+                    <div ng-message="required">password is required.</div>
+                </div>
+            </md-input-container>
+
+            <md-button class="login-button">
+                <md-icon md-svg-src="login-variant" class="login-icon"></md-icon>
+                <span>Login</span>
+            </md-button>
+
+        </form>
+    </div>
 </div>

@@ -1,0 +1,106 @@
+<div class="sign-up-main-container" layout="column" layout-align="center center" flex="grow">
+    <div class="signup-header">{{signUp.header}}</div>
+    <form name="userForm" class="signup-form-container" ng-show="signUp.showFields">
+        <!-- Name -->
+        <md-input-container class="md-block input-alignment" flex-gt-sm ng-value="showHints = true" flex="80">
+            <label>Name</label>
+            <md-icon md-svg-src="account" class="name"></md-icon>
+            <input md-maxlength="30" required name="name" ng-model="signUp.userData.name" class="sign-up-input" />
+
+            <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+
+            <div ng-messages="userForm.name.$error">
+                <div ng-message="required">Name is required.</div>
+                <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block input-alignment" flex-gt-sm ng-value="showHints = true" flex="80">
+            <label>Username</label>
+            <md-icon md-svg-src="bow-tie" class="name"></md-icon>
+            <input md-maxlength="30" required name="username" ng-model="signUp.userData.username" class="sign-up-input" />
+
+            <div class="hint" ng-if="showHints">Tell us your nick name!</div>
+
+            <div ng-messages="userForm.username.$error">
+                <div ng-message="required">Name is required.</div>
+                <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block input-alignment" flex-gt-sm flex="80">
+            <label>Password</label>
+            <md-icon md-svg-src="account-key" class="name"></md-icon>
+            <input md-minlength="5" required name="password" type="password" ng-model="signUp.userData.password" class="sign-up-input" />
+
+            <div ng-messages="userForm.password.$error">
+                <div ng-message="required">Password is required.</div>
+                <div ng-message="md-minlength">The password has to be atleast 5 characters long.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block input-alignment" flex-gt-sm flex="80">
+            <label>Confirm Password</label>
+            <md-icon md-svg-src="assets/icons/verified-user.svg" class="name"></md-icon>
+            <input md-minlength="5" required name="confirmPassword" type="password" ng-model="signUp.userData.confirmPassword" ng-focus="confirmFocus=true"
+                ng-pattern="signUp.userData.password" class="sign-up-input" />
+
+            <div class="form-error-msg">
+                <span ng-show="confirmFocus && signUp.userData.password && signUpuserData.password !== signUp.userData.confirmPassword">Password did not match</span>
+            </div>
+
+            <div ng-messages="userForm.confirmPassword.$error">
+                <div ng-message="required">Please confirm password.</div>
+                <div ng-message="md-minlength">Password did not match.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block input-alignment" flex-gt-sm ng-value="showHints=true" flex="80">
+            <label>Email</label>
+            <md-icon md-svg-src="email" class="name"></md-icon>
+            <input name="email" ng-model="signUp.userData.email" required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" class="sign-up-input"
+            />
+
+            <div class="hint" ng-show="showHints">How can we reach you?</div>
+
+            <div ng-messages="userForm.email.$error" ng-hide="showHints">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                    Your email must be between 10 and 100 characters long and look like an e-mail address.
+                </div>
+            </div>
+        </md-input-container>
+
+        <md-button class="signup-button input-alignment" ng-click="onNext()" flex="80">
+            <md-icon md-svg-src="login-variant" class="signup-button-icon"></md-icon>
+            <span>NEXT</span>
+        </md-button>
+
+    </form>
+    <div class="avatar-grid-holder" ng-show=signUp.showAvatarGrid>
+        <md-grid-list md-cols="3" md-row-height="1:1" md-gutter="4px">
+
+            <md-grid-tile rowspan="1" colspan="1" ng-class="'red'" ng-repeat="avatar in avatars">
+                <!--  <md-icon md-svg-icon="../../assets/icons/check.svg" class="selected-mark" ng-if="avatar.selected"></md-icon> -->
+                <md-button class="{{avatar.class}}" ng-click="onAvatarSelect(avatar , $index)">
+                    <md-icon md-svg-icon="{{avatar.url}}" class="avatar"></md-icon>
+                    <md-grid-tile-footer>
+                        <h3>{{avatar.name}}</h3>
+                    </md-grid-tile-footer>
+                </md-button>
+            </md-grid-tile>
+
+        </md-grid-list>
+
+        <div class = "button-container-avatar-tab" flex>
+            <md-button class="signup-button input-alignment" flex="45" style="float:left" ng-click="onBack()">
+                <md-icon md-svg-src="assets/icons/back.svg" class="signup-button-icon"></md-icon>
+                <span>Back</span>
+            </md-button>
+            <md-button class="signup-button input-alignment" flex="45" style="float:right" ng-click="onDone()">
+                <md-icon md-svg-src="assets/icons/done.svg" class="signup-button-icon"></md-icon>
+                <span>Done</span>
+            </md-button>
+        </div>
+
+    </div>
+</div>
