@@ -1,0 +1,68 @@
+.search-cage {
+    padding: 1%;
+    text-align: center;
+    display: flex;
+    background-color: white;
+}
+
+.utility-tool-bar {
+    /*  background-color: lavender; */
+    padding: 1%;
+    width: 98%;
+    margin: auto;
+    background-color: rgba(233, 224, 224, 0.938);
+}
+
+.email-list {
+    background-color: rgba(233, 224, 224, 0.938);
+}
+
+.email-list-item {
+    border-radius: 12px;
+    width: 98%;
+    margin: auto;
+    margin-bottom: 1%;
+    background-color: #f3f1f1;
+}
+
+.md-list-item-text.layout-row{
+    align-items: center;
+}
+
+.email-list-item-avatar {
+    max-width: 5%;
+}
+
+.email-list-item-sender {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 15%;
+}
+
+.email-list-item-subject {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 15%;
+}
+
+.email-list-item-body {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 55%;
+}
+
+.email-list-item-checkbox {
+    padding-right: 1%;
+}
+
+.email-list-magickeys-icon {
+    color: black !important;
+}
+
+/* padding-left: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    background-color: rgba(233, 224, 224, 0.938); */

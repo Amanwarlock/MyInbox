@@ -48,13 +48,12 @@
 
     </div>
 
-    <md-divider></md-divider>
     <!--  <md-icon md-svg-icon="android"></md-icon>
     <i class="mdi mdi-bell"></i> -->
     <!-- Emails list -->
     <md-list class="email-list" flex>
-        {{item.isOpen}}
-        <md-list-item class="md-3-line " ng-repeat="item in todos" ng-click="null" ng-mouseenter="item.isOpen=true" ng-mouseleave="item.isOpen=false">
+        
+        <md-list-item class="md-3-line email-list-item" ng-repeat="item in todos" ng-click="null" ng-mouseenter="item.isOpen=true" ng-mouseleave="item.isOpen=false">
 
             <div class="md-list-item-text" layout="row">
                 <md-checkbox class="email-list-item-checkbox" ng-model="isChecked" aria-label="Finished?"></md-checkbox>
@@ -88,8 +87,6 @@
 
                 </md-fab-toolbar>
             </div>
-
-            <md-divider></md-divider>
 
         </md-list-item>
 
