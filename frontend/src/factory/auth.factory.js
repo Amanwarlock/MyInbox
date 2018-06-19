@@ -25,6 +25,18 @@
                 return token ? true : false;
             };
 
+            authFactory.isAuthenticated = function () {
+                var defer = $q.defer();
+                var token = AuthToken.getToken();
+                
+                if (token)
+                    defer.resolve(true);
+                else
+                    defer.reject(false);
+
+                return defer.promise;
+            };
+
             authFactory.login = function (username, password) {
                 // let url = `${apis.end_point}/${apis.login}`;
                 let url = `/${apis.login}`;

@@ -1,7 +1,7 @@
 (function () {
     "use strict"
     angular.module('userModule')
-        .controller('userController', ['$scope', '$q', 'User', 'Avatar', function ($scope, $q, User, Avatar) {
+        .controller('userController', ['$scope', '$q', 'User', 'Avatar', 'AuthToken', '$location', function ($scope, $q, User, Avatar, AuthToken, $location) {
             let vm = this;
 
             $scope.signUp = {
@@ -40,7 +40,18 @@
 
             /* Submit */
             $scope.onDone = function () {
+                signUpNewUser();//sign-up
+            }
 
+            function signUpNewUser() {
+                User.create().then(data => {
+                    if (data.success) {
+                        AuthToken.setToken(data.token);
+                        $location.path("/");
+                    } else {
+                        toastr.error(data.error);
+                    }
+                }).catch(e => toastr.error(e.message));
             }
 
         }]);

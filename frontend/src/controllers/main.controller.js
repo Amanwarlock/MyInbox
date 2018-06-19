@@ -8,9 +8,15 @@
         .config(function ($urlRouterProvider) {
             $urlRouterProvider.otherwise("/login");
         })
-        .controller("mainController", function ($scope, $rootScope, $q, $http) {
+        .controller("mainController", function ($scope, $rootScope, $q, $http, $state, Auth, toastr) {
 
             let vm = this;
 
+            /* 
+                - '$stateChangeStart'
+                - '$routeChangeStart'
+                - '$routeChangeError'
+                - '$stateChangeError'
+             */
         });
 })();

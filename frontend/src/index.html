@@ -24,6 +24,7 @@
     <!-- material design icons -->
     <link type="text/css" rel="stylesheet" href="../node_modules/mdi/css/materialdesignicons.min.css"></link>
     <link type="text/css" rel="stylesheet" href="../node_modules/mdi/css/materialdesignicons.min.css.map"></link>
+    <link type="text/css" rel="stylesheet" href="../bower_components/angular-toastr/dist/angular-toastr.min.css"></link>
 
 
     <title>My Inbox</title>
@@ -42,6 +43,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <!-- Avatar library -->
     <script src="../bower_components/angular-avatar/dist/angular-avatar.min.js"></script>
+    <script src="../bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
 
 </head>
 
@@ -236,7 +238,6 @@
 
         <!--Content body  -->
         <md-content class="content" flex>
-            {{2+2}}
             <ui-view></ui-view>
         </md-content>
     </div>
