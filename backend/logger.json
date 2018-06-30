@@ -1,0 +1,8 @@
+{
+    "appenders": {
+        "MyInbox": {
+            "type": "console"
+        }
+    },
+    "categories" :{"default" : {"appenders" : ["MyInbox"] , "level" : "ALL"}}
+}

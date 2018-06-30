@@ -1,0 +1,5 @@
+{
+    "secretKey": "This is freaking amazing",
+    "mongoDBUrl": "mongodb://localhost/MyInbox",
+    "port" : 5600
+}

@@ -46,6 +46,7 @@ label.md-required {
     letter-spacing: .2em;
     color: ghostwhite;
     padding: 3px;
+    font-weight: bold;
 }
 
 .signup-button-icon {

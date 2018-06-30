@@ -384,7 +384,6 @@
                 'selected': false
             }
             ];
-            ;
 
             return avatarFactory;
         });

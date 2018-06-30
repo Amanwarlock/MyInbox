@@ -1,4 +1,4 @@
-<div class="sign-up-main-container" layout="column" layout-align="center center" flex="grow">
+<div class="sign-up-main-container animated slideInDown" layout="column" layout-align="center center" flex="grow">
     <div class="signup-header">{{signUp.header}}</div>
     <form name="userForm" class="signup-form-container" ng-show="signUp.showFields">
         <!-- Name -->
@@ -76,6 +76,7 @@
         </md-button>
 
     </form>
+
     <div class="avatar-grid-holder" ng-show=signUp.showAvatarGrid>
         <md-grid-list md-cols="3" md-row-height="1:1" md-gutter="4px">
 

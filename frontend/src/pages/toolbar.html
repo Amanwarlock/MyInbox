@@ -1,0 +1,52 @@
+<md-toolbar class="md-hue-2 animated slideInTop" ng-controller="myThemeCtrl as theme" layout="row">
+
+    <div class="md-toolbar-tools">
+
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="theme.toggleSideBar();">
+            <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
+        </md-button>
+
+        <h2 flex md-truncate="">My Inbox</h2>
+
+        <div class="toolbar-user-name">
+            Hi, Aman Kareem
+        </div>
+
+        <div class="toolbar-user-avatar" layout="row">
+            <img ng-src="assets/avatars/boy-x.svg" class="toolbar-img-avatar">
+        </div>
+
+        <md-menu md-position-mode="target-right target">
+
+            <md-button class="md-icon-button" aria-label="More" ng-mouseenter="$mdMenu.open($event)">
+                <md-icon md-svg-icon="dots-vertical"></md-icon>
+            </md-button>
+
+            <md-menu-content width="4" class="toolbar-dropdown-menu-content">
+                <!-- Item -1 = Profile -->
+                <md-menu-item>
+                    <md-button ng-click="ctrl.announceClick($index)">
+                        <div layout="row" flex>
+                            <md-icon md-menu-align-target md-svg-icon="assets/avatars/boy-x.svg" style="margin: auto 3px auto 0;"></md-icon>
+                            <p class="toolbar-vertical-dot-item-title" flex>Profile</p>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+
+                <md-divider></md-divider>
+                <!-- Item 2 = Logout -->
+                <md-menu-item>
+                    <md-button ng-click="ctrl.announceClick($index)">
+                        <div layout="row" flex>
+                            <md-icon md-menu-align-target md-svg-icon="assets/icons/logout.svg" style="margin: auto 3px auto 0;"></md-icon>
+                            <p class="toolbar-vertical-dot-item-title" flex>Logout</p>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+
+        </md-menu>
+
+    </div>
+
+</md-toolbar>
