@@ -8,8 +8,8 @@
             <md-input-container class="username-container">
                 <label>Username</label>
                 <md-icon md-svg-src="account" class="name"></md-icon>
-                <input required name="userName" ng-model="loginData.userName">
-                <div ng-messages="loginForm.userName.$error">
+                <input required name="userName" ng-model="loginData.username">
+                <div ng-messages="username.username.$error">
                     <div ng-message="required">Username is required.</div>
                 </div>
             </md-input-container>
@@ -23,7 +23,7 @@
                 </div>
             </md-input-container>
 
-            <md-button class="login-button">
+            <md-button class="login-button" ng-click="doLogin()">
                 <md-icon md-svg-src="login-variant" class="login-icon"></md-icon>
                 <span>Login</span>
             </md-button>

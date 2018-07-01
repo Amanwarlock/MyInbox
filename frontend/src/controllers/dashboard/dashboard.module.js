@@ -9,7 +9,7 @@
                     controller: 'dashboardController',
                     title: 'Dashboard',
                     resolve: {
-                        isAuthenticated: ['Auth' , function(Auth){
+                        isAuthenticated: ['Auth', function (Auth) {
                             return Auth.isAuthenticated();
                         }]
                     }
@@ -18,7 +18,12 @@
                     url: '/dashboard',
                     templateUrl: 'controllers/dashboard/dashboard.html',//'../../pages/dashboard.html',
                     controller: 'dashboardController',
-                    title: 'Dashboard'
+                    title: 'Dashboard',
+                    resolve: {
+                        isAuthenticated: ['Auth', function (Auth) {
+                            return Auth.isAuthenticated();
+                        }]
+                    }
                 })
         });
 })()

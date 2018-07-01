@@ -8,15 +8,24 @@
 
         <h2 flex md-truncate="">My Inbox</h2>
 
-        <div class="toolbar-user-name">
-            Hi, Aman Kareem
+        <div class="sign-up-link" ng-if="!isLoggedIn">
+            <!-- target="_blank"-->
+            <md-button md-no-ink ui-sref="login" class="md-primary login-toolbar-link">Login</md-button>
         </div>
 
-        <div class="toolbar-user-avatar" layout="row">
-            <img ng-src="assets/avatars/boy-x.svg" class="toolbar-img-avatar">
+        <div class="login-link" ng-if="!isLoggedIn">
+            <md-button md-no-ink ui-sref="signup" class="md-primary sign-up-toolbar-link">Sign-up</md-button>
         </div>
 
-        <md-menu md-position-mode="target-right target">
+        <div class="toolbar-user-name" ng-if="isLoggedIn">
+            Hi, {{user.username}}
+        </div>
+
+        <div class="toolbar-user-avatar" layout="row" ng-if="isLoggedIn">
+            <img ng-src={{user.avatar.path}} class="toolbar-img-avatar">
+        </div>
+
+        <md-menu md-position-mode="target-right target" ng-if="isLoggedIn">
 
             <md-button class="md-icon-button" aria-label="More" ng-mouseenter="$mdMenu.open($event)">
                 <md-icon md-svg-icon="dots-vertical"></md-icon>
@@ -27,7 +36,7 @@
                 <md-menu-item>
                     <md-button ng-click="ctrl.announceClick($index)">
                         <div layout="row" flex>
-                            <md-icon md-menu-align-target md-svg-icon="assets/avatars/boy-x.svg" style="margin: auto 3px auto 0;"></md-icon>
+                            <md-icon md-menu-align-target md-svg-icon="{{user.avatar.url}}" style="margin: auto 3px auto 0;"></md-icon>
                             <p class="toolbar-vertical-dot-item-title" flex>Profile</p>
                         </div>
                     </md-button>
@@ -36,7 +45,7 @@
                 <md-divider></md-divider>
                 <!-- Item 2 = Logout -->
                 <md-menu-item>
-                    <md-button ng-click="ctrl.announceClick($index)">
+                    <md-button ng-click="doLogout()">
                         <div layout="row" flex>
                             <md-icon md-menu-align-target md-svg-icon="assets/icons/logout.svg" style="margin: auto 3px auto 0;"></md-icon>
                             <p class="toolbar-vertical-dot-item-title" flex>Logout</p>

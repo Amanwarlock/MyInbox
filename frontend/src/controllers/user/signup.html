@@ -45,9 +45,9 @@
             <input md-minlength="5" required name="confirmPassword" type="password" ng-model="signUp.userData.confirmPassword" ng-focus="confirmFocus=true"
                 ng-pattern="signUp.userData.password" class="sign-up-input" />
 
-            <!-- <div class="form-error-msg">
+            <div class="form-error-msg">
                 <span ng-show="confirmFocus && signUp.userData.password && signUpuserData.password !== signUp.userData.confirmPassword">Password did not match</span>
-            </div> -->
+            </div>
 
             <div ng-messages="userForm.confirmPassword.$error">
                 <div ng-message="required">Please confirm password.</div>

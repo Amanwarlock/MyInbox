@@ -9,6 +9,9 @@ const url = config.mongoDBUrl;
 var socketIo = null;
 var app = null;
 
+/* Require modules/files */
+var userController = require("./user/user.controller");
+
 Mongoose.connect(url, function (err, connection) {
     if (err) {
         logger.fatal("DB connection failed : ", err);
@@ -21,11 +24,18 @@ function init(_app, _socketIo) {
     app = _app;
     socketIo = _socketIo;
 
+    /* Instantiate Dependencies */
+    userController.init(app, socketIo, logger);
+
     socketIo.on('connection', function (socket) {
         logger.trace("SOCKET : A user is connected to the socket......");
     });
 }
 
 module.exports = {
-    init: init
+    init: init,
+    /* User controller API Routing */
+    v1_login: userController.login,
+    v1_createUser: userController.create,
+    v1_loggedInUser: userController.loggedInUser
 };

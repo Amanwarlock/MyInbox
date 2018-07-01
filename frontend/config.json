@@ -1,5 +1,5 @@
 {
     "port" : 4000,
-    "proxy" : "http://localhost:9000",
-    "domain" : "localhost:9000"
+    "proxy" : "http://localhost:5600",
+    "domain" : "localhost:5600"
 }

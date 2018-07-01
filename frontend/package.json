@@ -27,6 +27,7 @@
     "materialize-css": "^1.0.0-rc.1",
     "matter-js": "^0.14.2",
     "mdi": "^2.2.43",
+    "ngstorage": "^0.3.11",
     "nodemon": "^1.17.5",
     "particles.js": "^2.0.0",
     "popper.js": "^1.14.3",

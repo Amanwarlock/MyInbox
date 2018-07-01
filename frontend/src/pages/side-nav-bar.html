@@ -6,19 +6,22 @@
 
             <md-card-title-media>
                 <div>
-                    <img ng-src="assets/avatars/boy-x.svg" class="md-card-image side-nav-bar-avatar" alt="Washed Out">
+                    <!-- ng-src="assets/avatars/boy-x.svg"-->
+                    <img ng-src={{user.avatar.url}} class="md-card-image side-nav-bar-avatar" alt="Washed Out">
                 </div>
-                <a href="#" class="side-nav-bar-card-profile-img-change" md-ink-ripple>
+
+                <a href="javascript:;" class="side-nav-bar-card-profile-img-change" md-ink-ripple ng-click="changeAvatar()">
                     <md-icon md-svg-icon="camera" class="side-bar-profile-img-chang"></md-icon>Change
                 </a>
+
             </md-card-title-media>
 
             <md-card-title-text>
                 <span class="md-subhead">
-                    <h4>Mohd Aman Kareem</h4>
+                    <h4>{{user.name}}</h4>
                 </span>
                 <span class="md-subhead">
-                    <h4>amanwarlock555@gmail.com</h4>
+                    <h4>{{user.email}}</h4>
                 </span>
             </md-card-title-text>
 

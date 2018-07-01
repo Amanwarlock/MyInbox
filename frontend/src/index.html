@@ -17,6 +17,7 @@
     <link type="text/css" rel="stylesheet" href="assets/css/login.css"></link>
     <link type="text/css" rel="stylesheet" href="assets/css/signup.css"></link>
     <link type="text/css" rel="stylesheet" href="assets/css/dashboard.css"></link>
+    <link type="text/css" rel="stylesheet" href="assets/css/toolbar.css"></link>
 
     <!-- Fonts -->
     <link type="text/css" rel="stylesheet" href="../node_modules/mdi/fonts/materialdesignicons-webfont.eot"></link>
@@ -48,17 +49,18 @@
     <!-- Avatar library -->
     <script src="../bower_components/angular-avatar/dist/angular-avatar.min.js"></script>
     <script src="../bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="../bower_components/ngstorage/ngStorage.min.js"></script>
 
 </head>
 
-<body ng-controller="mainController as main" layout="column">
+<body ng-controller="dashboardController as dashCtrl" layout="column">
     <!-- Tool bar -->
     <ng-include src="'pages/toolbar.html'"></ng-include>
 
     <div class="container" layout="row" flex>
         <!-- Side  nav bar -->
         <md-sidenav class="md-sidenav-left side-nav-bar animated slideInLeft" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="24"
-            md-component-id="left" ng-if="isLoggedIn">
+            md-component-id="left" ng-show="isLoggedIn">
             <div ng-include="'pages/side-nav-bar.html'"></div>
         </md-sidenav>
 

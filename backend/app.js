@@ -23,6 +23,11 @@ app.use(morgan('dev'));
 process.env.PORT = config.port;
 
 controller.init(app, socketIo);
+
+app.set("socketIo", socketIo);
+app.set("logger", logger);
+app.set("secretkey", secretKey);
+
 /* 
   HTTP 4XX codes:
     - 400 = Bad Request;
@@ -31,7 +36,10 @@ controller.init(app, socketIo);
     - 404 = Not Found;
 */
 app.use(function (req, res, next) {
-  if (req.headers["Authorization"] || req.headers["x-access-token"]) {
+  if (req.url === "/MyInbox/api/user/login" || req.url === "/MyInbox/api/user/create") {
+    next();
+  }
+  else if (req.headers["Authorization"] || req.headers["x-access-token"]) {
     const token = req.headers["Authorization"] || req.headers["x-access-token"];
     jwt.verify(token, secretKey, function (err, decoded) {
       if (err) {
@@ -41,8 +49,6 @@ app.use(function (req, res, next) {
         next();
       }
     });
-  } else if (req.url === "/MyInbox/api/user/login" || req.url === "/MyInbox/api/user/create") {
-    next();
   } else {
     res.status(403).send({ "message": "No Token , Access Forbidden" });
   }

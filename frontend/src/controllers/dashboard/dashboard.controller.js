@@ -1,9 +1,11 @@
 (function () {
     "use strict"
     angular.module('dashboardModule')
-        .controller('dashboardController', ['$rootScope', '$scope', '$q', '$http', '$state', '$stateParams', 'toastr', function ($rootScope, $scope, $q, $http, $state, $stateParams, toastr) {
+        .controller('dashboardController', ['$rootScope', '$scope', '$q', '$http', '$state', '$stateParams', 'toastr', 'Auth', 'User', function ($rootScope, $scope, $q, $http, $state, $stateParams, toastr, Auth, User) {
 
             let vm = this;
+
+            $rootScope.isLoggedIn = Auth.isLoggedIn();
 
             vm.isFabOpen = false;
 
@@ -12,6 +14,32 @@
                 count: 0,
                 selectedDirection: 'right'
             };
+
+            $scope.doLogout = function () {
+                Auth.logout();
+                $rootScope.isLoggedIn = false;
+                $state.go("login");
+            };
+
+            $scope.changeAvatar = function () {
+                alert("change avatar");
+            }
+
+            function init() {
+                /*
+                    - Get user
+                    - Get user Emails 
+                 */
+                var userPromise = User.getCurrentUser();
+
+                $q.all([userPromise]).then(result => {
+                    $scope.user = result[0].user;
+                    console.log("--user---", $scope.user);
+                }).catch(e => toastr.error(e.message));
+            }
+
+
+            init();
 
             $scope.todos = [
                 {

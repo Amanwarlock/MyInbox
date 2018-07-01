@@ -1,7 +1,7 @@
 (function () {
     "use strict"
     angular.module('userModule')
-        .controller('userController', ['$scope', '$q', 'User', 'Avatar', 'AuthToken', '$location', function ($scope, $q, User, Avatar, AuthToken, $location) {
+        .controller('userController', ['$scope', '$q', 'User', 'Avatar', 'AuthToken', '$location', '$state', 'toastr', function ($scope, $q, User, Avatar, AuthToken, $location, $state, toastr) {
             let vm = this;
 
             $scope.signUp = {
@@ -44,10 +44,23 @@
             }
 
             function signUpNewUser() {
-                User.create().then(data => {
+                if ($scope.signUp.userData.password !== $scope.signUp.userData.confirmPassword) {
+                    toastr.error("Password did not match");
+                    return
+                }
+
+                $scope.signUp.userData.avatar = $scope.signUp.avatar;
+
+                if (!$scope.signUp.userData.avatar || _.isEmpty($scope.signUp.userData.avatar)) {
+                    toastr.error("Avatar is not selected");
+                    return;
+                }
+
+                User.create($scope.signUp.userData).then(data => {
                     if (data.success) {
                         AuthToken.setToken(data.token);
                         $location.path("/");
+                        //$state.go();
                     } else {
                         toastr.error(data.error);
                     }

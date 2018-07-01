@@ -13,8 +13,15 @@
                 return config;
             };
 
-            interceptorFactory.responseError = function(response){
-                if(response.status === 403){
+            interceptorFactory.response = function (response) {
+                /* if (response.status === 200 && response.data) {
+                    return $q.resolve(response.data);
+                } */
+                return response;
+            };
+
+            interceptorFactory.responseError = function (response) {
+                if (response.status === 403 || response.status === 401) {
                     $location.path('/login');
                     AuthToken.setToken();
                 }

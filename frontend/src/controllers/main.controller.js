@@ -12,7 +12,7 @@
 
             let vm = this;
 
-            $scope.isLoggedIn = Auth.isLoggedIn();
+            $rootScope.isLoggedIn = Auth.isLoggedIn();
             /* 
                 - '$stateChangeStart'
                 - '$routeChangeStart'

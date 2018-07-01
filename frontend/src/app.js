@@ -4,6 +4,7 @@
         'ngMaterial',
         'ngMessages',
         'ngAnimate',
+        'ngStorage',
         'toastr',
         'ngAvatar',
         'ui.bootstrap',
@@ -15,9 +16,10 @@
         'services'
     ])
         .constant("apis", {
-            "end_point": `http://localhost:9000`,
-            "login": ``,
-            "signup": ''
+            "end_point": `http://localhost:5600`,
+            "user": `MyInbox/api/user`,
+            "login": `MyInbox/api/user/login`,
+            "signup": 'MyInbox/api/user/create'
         })
         .config(function ($httpProvider) {
             $httpProvider.interceptors.push('AuthInterceptor');
@@ -63,6 +65,9 @@
                  toastClass: 'toast'
              }); */
         })
+        .config(function ($localStorageProvider) {
+            $localStorageProvider.setKeyPrefix("myInbx-");
+        })
         .run(['$rootScope', '$state', '$location', 'Auth', 'toastr', function ($rootScope, $state, $location, Auth, toastr) {
 
             /*  window.onload = function () {
@@ -79,6 +84,7 @@
 
             $rootScope.$watch(Auth.isLoggedIn, function (oldValue, newValue) {
                 if (newValue) {
+                    $rootScope.isLoggedIn = true;
                     toastr.info("Watching user is logged in");
                 } else {
                     toastr.warning("watching user is not logged in");
@@ -112,7 +118,6 @@
                 toastr.error("state error handler says isLoggedin is ", err.detail);
                 $state.go('login');
             });
-
 
         }])
 

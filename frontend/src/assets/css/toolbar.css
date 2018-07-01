@@ -1,0 +1,11 @@
+a.md-primary.login-toolbar-link.md-button {
+    color: rgba(255,255,255,0.87);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+}
+
+a.md-primary.sign-up-toolbar-link.md-button {
+    color: rgba(255,255,255,0.87);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+}

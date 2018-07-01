@@ -10,7 +10,7 @@
             $mdIconProvider
                 .defaultIconSet('../assets/icons/mdi.svg');
         })
-        .controller("myThemeCtrl", function ($scope, $mdSidenav) {
+        .controller("myThemeCtrl", function ($scope, $mdSidenav , Auth) {
 
             let vm = this;
 
